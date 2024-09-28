@@ -1,0 +1,18 @@
+# cpanel.yml
+
+deployment:
+  tasks:
+    - name: Pull latest changes from GitHub (main branch)
+      command: /bin/git pull origin main
+
+    # - name: Install Composer dependencies (if you have a composer.json file)
+      # command: /usr/local/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --working-dir=/home2/ifocporg/public_html/remita
+
+    - name: Set proper file permissions (optional)
+      command: find /home2/ifocporg/public_html/remita -type f -exec chmod 644 {} \; && find /home2/ifocporg/public_html/remita -type d -exec chmod 755 {} \;
+
+    # - name: Clear cache (for Laravel or other PHP frameworks)
+      # command: /usr/local/bin/php /home2/ifocporg/public_html/remita/artisan cache:clear
+
+    # - name: Migrate the database (if using Laravel migrations)
+      # command: /usr/local/bin/php /home2/ifocporg/public_html/remita/artisan migrate --force
